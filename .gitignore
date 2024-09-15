@@ -34,3 +34,6 @@ node_modules
 
 # MacOS specific files
 .DS_Store
+
+# Ignore package-lock.json in node_modules only
+node_modules/**/package-lock.json
