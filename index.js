@@ -1,7 +1,10 @@
 // Import the necessary modules
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 5000;
+
+// Use the PORT environment variable or default to 5000
+const port = process.env.PORT || 5000;
 
 // Define a simple route
 app.get("/", (req, res) => {
