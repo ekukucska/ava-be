@@ -8,6 +8,7 @@ const patchesRoutes = require("./patchesRoutes.js");
 const eventsRoutes = require("./eventsRoutes.js");
 const anomaliesRoutes = require("./anomaliesRoutes.js");
 const aggregatedStudiesRoutes = require("./aggregatedStudiesRoutes.js");
+const aggregatedSubjectsRoutes = require("./aggregatedSubjectsRoutes.js");
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.use("/api/patches", patchesRoutes);
 router.use("/api/events", eventsRoutes);
 router.use("/api/anomalies", anomaliesRoutes);
 router.use("/api/aggregatedStudies", aggregatedStudiesRoutes);
+router.use("/api/aggregatedSubjects", aggregatedSubjectsRoutes);
 
 module.exports = router;
