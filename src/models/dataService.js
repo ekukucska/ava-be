@@ -4,6 +4,9 @@ require("dotenv").config();
 const User = require("./user.js");
 const Study = require("./study.js");
 const Subject = require("./subject.js");
+const Patch = require("./patch.js");
+const Event = require("./event.js");
+const Anomaly = require("./anomaly.js");
 
 class MongoService {
   constructor() {
@@ -43,6 +46,18 @@ class MongoService {
 
   get Subject() {
     return Subject;
+  }
+
+  get Patch() {
+    return Patch;
+  }
+
+  get Event() {
+    return Event;
+  }
+
+  get Anomaly() {
+    return Anomaly;
   }
 }
 
