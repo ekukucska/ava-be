@@ -13,12 +13,6 @@ const studySchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  participants: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
   status: {
     type: String,
     enum: ["validated", "not validated"],
