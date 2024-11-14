@@ -2,9 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dataService = require("../models/dataService.js");
 const router = express.Router();
+const noCacheMiddleware = require("../middleware/caching/noCacheMiddleware.js");
 
+// Use body-parser middleware
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
+
+// Apply no-cache middleware for all user routes
+router.use(noCacheMiddleware);
 
 // Get all users
 router.get("/", async (req, res) => {
