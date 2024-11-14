@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const routes = require("./routes/index");
+const errorHandler = require("./middleware/errorMiddleware");
 
 const app = express();
 // Use the PORT environment variable or default to 5000
@@ -18,6 +19,9 @@ app.use(cors(corsOptions));
 
 // Use the routes
 app.use("/", routes);
+
+// Register the error handler middleware
+app.use(errorHandler);
 
 // Start the server
 app.listen(port, () => {
