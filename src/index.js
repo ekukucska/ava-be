@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const routes = require("./routes/index");
-const errorHandler = require("./middleware/errorMiddleware");
+const errorHandler = require("./middleware/errorHandling/errorMiddleware");
 const cacheControlMiddleware = require("./middleware/caching/cacheMiddleware");
 
 const app = express();
