@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dataService = require("../models/dataService.js");
-const router = express.Router();
+const authenticateTokenMiddleware = require("../middleware/authentication/authenticateTokenMiddleware.js");
 const noCacheMiddleware = require("../middleware/caching/noCacheMiddleware.js");
+
+const router = express.Router();
 
 // Use body-parser middleware
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -10,6 +12,9 @@ router.use(bodyParser.json());
 
 // Apply no-cache middleware for all user routes
 router.use(noCacheMiddleware);
+
+// Apply authentication middleware to all routes below
+router.use(authenticateTokenMiddleware);
 
 // Get all users
 router.get("/", async (req, res) => {
@@ -28,44 +33,13 @@ router.get("/by-email/:email", async (req, res) => {
     if (!user) {
       return res.status(404).send({ message: "User not found" });
     }
-    res.status(200).send(user);
+    res.status(200).send({
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    });
   } catch (error) {
     res.status(500).send({ message: error.message });
-  }
-});
-
-// Create a new user with email and password (firstName and lastName optional)
-router.post("/create", async (req, res) => {
-  try {
-    const { email, password, firstName = "", lastName = "" } = req.body;
-
-    // Validate required fields
-    if (!email || !password) {
-      return res
-        .status(400)
-        .send({ message: "Email and password are required" });
-    }
-
-    // Check if user already exists
-    const existingUser = await dataService.User.findOne({ email });
-    if (existingUser) {
-      return res
-        .status(409)
-        .send({ message: "User with this email already exists" });
-    }
-
-    // Create new user with optional fields defaulting to empty strings
-    const newUser = new dataService.User({
-      email,
-      password,
-      firstName: firstName || "",
-      lastName: lastName || "",
-    });
-
-    const createdUser = await newUser.save();
-    res.status(201).send(createdUser);
-  } catch (error) {
-    res.status(400).send({ message: error.message });
   }
 });
 

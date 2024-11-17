@@ -1,7 +1,20 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const dataService = require("../models/dataService.js");
+const authenticateTokenMiddleware = require("../middleware/authentication/authenticateTokenMiddleware");
+const noCacheMiddleware = require("../middleware/caching/noCacheMiddleware.js");
 
 const router = express.Router();
+
+// Use body-parser middleware
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+
+// Apply no-cache middleware for all user routes
+router.use(noCacheMiddleware); // TODO: Check if needed & co.
+
+// Apply the authentication middleware to all routes in this router
+router.use(authenticateTokenMiddleware);
 
 router.get("/", async (req, res) => {
   try {
