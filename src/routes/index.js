@@ -10,6 +10,7 @@ const anomaliesRoutes = require("./anomaliesRoutes.js");
 const aggregatedStudiesRoutes = require("./aggregatedStudiesRoutes.js");
 const aggregatedSubjectsRoutes = require("./aggregatedSubjectsRoutes.js");
 const testErrorRoutes = require("./testErrorRoutes.js");
+const authRoutes = require("./authRoutes.js");
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.use("/api/anomalies", anomaliesRoutes);
 router.use("/api/aggregatedStudies", aggregatedStudiesRoutes);
 router.use("/api/aggregatedSubjects", aggregatedSubjectsRoutes);
 router.use("/test/error", testErrorRoutes); // Only for testing global error handling
+router.use("/auth", authRoutes);
 
 module.exports = router;
