@@ -2,7 +2,9 @@
 
 ## Description
 
-This is the backend service for the `ava-be` project, built using Node.js and Express. It handles various API endpoints for managing users, studies, subjects, patches, events, anomalies, and aggregated data. The backend connects to a MongoDB database using Mongoose and includes basic error handling and caching mechanisms.
+This is the backend service for the `ava` project — a capstone project developed as part of my Bachelor's degree in Computer Science at Universitatea „Tibiscus” - Timișoara.
+
+Built using **Node.js** and **Express**, the backend provides RESTful API endpoints for managing users, studies, subjects, patches, events, anomalies, and aggregated sensor data. It connects to a **MongoDB** database via **Mongoose** and includes basic error handling and caching.
 
 ## Project Setup
 
