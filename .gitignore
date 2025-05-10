@@ -29,9 +29,6 @@ node_modules
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variables file
-.env
-
 # MacOS specific files
 .DS_Store
 
