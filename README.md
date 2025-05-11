@@ -32,7 +32,9 @@ Ensure you have the following installed:
 Run in the terminal:
 npm run dev
 
-### Make sure to an .env file & include the necessary env. variables:
+### Ensure `.env` File Exists
+
+Check that the `.env` file is in the project directory. If it's missing, create it manually and add the required environment variables:
 
 PORT=<the_port_on_which_the_BE_runs>
 DB_CONNECTION_STRING=<MongoDB_connection_URL>
